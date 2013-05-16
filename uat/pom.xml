@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.developpez.hugo</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <artifactId>developpez-pom-parent-ws</artifactId>
+    </parent>
+
+    <artifactId>uat</artifactId>
+    <packaging>jar</packaging>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>eviwarePluginRepository</id>
+			<url>http://www.eviware.com/repository/maven2/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<properties>
+		<properties-maven-plugin.version>1.0-alpha-2</properties-maven-plugin.version>
+		<maven-soapui-plugin.version>3.6.1</maven-soapui-plugin.version>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>eviware</groupId>
+				<artifactId>maven-soapui-plugin</artifactId>
+				<version>${maven-soapui-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>soapui-test</id>
+						<phase>process-test-classes</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<projectFile>${basedir}/src/test/resources/soapui/Developpezcom-TestSuite.xml</projectFile>
+							<host>localhost:8081</host>
+							<testSuite>Developpez.com TestSuite</testSuite>
+							<junitReport>true</junitReport>
+							<exportAll>true</exportAll>
+							<printReport>true</printReport>
+							<outputFolder>target/surefire-reports</outputFolder>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

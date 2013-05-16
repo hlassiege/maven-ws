@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="webapp" resourceRoot="" soapui-version="4.0.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/>
+<con:testSuite name="Developpez.com TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="create TestCase" searchProperties="true" id="d20e3afe-fe32-4e76-b1d3-0eee8e1557e0"><con:settings/><con:testStep type="request" name="create"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>DefaultProfileResourceServiceSoapBinding</con:interface><con:operation>create</con:operation><con:request name="create"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/webapp/profile</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.ws.hugo.developpez.com/" xmlns:mod="http://www.developpez.com/hugo/model">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:create>
+         <!--Optional:-->
+         <arg0>
+            <mod:id>1</mod:id>
+            <!--Optional:-->
+            <mod:account>
+               <mod:id>1</mod:id>
+               <mod:login>test</mod:login>
+               <mod:password>password</mod:password>
+            </mod:account>
+            <mod:first_name>first</mod:first_name>
+            <mod:last_name>last</mod:last_name>
+            <!--Optional:-->
+            <mod:nickname>nick</mod:nickname>
+            <!--Optional:-->
+            <mod:gender>M</mod:gender>
+            <mod:email>hlassiege@gmaileux.com</mod:email>
+         </arg0>
+      </ser:create>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="Schema Compliance" name="Schema Compliance"><con:configuration><definition/></con:configuration></con:assertion><con:assertion type="GroovyScriptAssertion" name="Script Assertion"><con:configuration><scriptText>import com.eviware.soapui.support.XmlHolder
+
+// check for RequestId element in response
+def holder = new XmlHolder( messageExchange.responseContentAsXml )
+assert holder["//ns2:creation_date"] != null
+assert holder["//ns2:modification_date"] != null</scriptText></con:configuration></con:assertion><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://impl.services.ws.hugo.developpez.com/ProfileResource/create" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite>

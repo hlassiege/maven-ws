@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema elementFormDefault="qualified" version="1.0"
+	targetNamespace="http://www.developpez.com/hugo/model" 
+	xmlns:tns="http://www.developpez.com/hugo/model" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="profile" type="tns:Profile"/>
+	<xs:element name="account" type="tns:Account"/>
+	
+	<xs:complexType name="Account">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element minOccurs="1" name="login" type="xs:string"/>
+            <xs:element minOccurs="1" name="password" type="xs:string"/>
+            <xs:element minOccurs="0" name="creation_date" type="xs:dateTime"/>
+            <xs:element minOccurs="0" name="modification_date" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>	
+	
+	<xs:complexType name="Profile">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element minOccurs="0" name="account" type="tns:Account"/>
+            <xs:element minOccurs="1" name="first_name" type="xs:string"/>
+            <xs:element minOccurs="1" name="last_name" type="xs:string"/>
+            <xs:element minOccurs="0" name="nickname" type="xs:string"/>
+            <xs:element minOccurs="0" name="birthdate" type="xs:dateTime"/>
+            <xs:element minOccurs="1" name="gender" type="xs:string"/>
+            <xs:element minOccurs="1" name="email" type="xs:string"/>
+            <xs:element minOccurs="0" name="creation_date" type="xs:dateTime"/>
+            <xs:element minOccurs="0" name="modification_date" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+

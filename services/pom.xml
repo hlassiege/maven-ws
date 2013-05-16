@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.developpez.hugo</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <artifactId>developpez-pom-parent-ws</artifactId>
+    </parent>
+
+    <artifactId>services</artifactId>
+    <packaging>jar</packaging>
+
+    <properties>
+        <cxf.version>2.4.1</cxf.version>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.parent.groupId}</groupId>
+            <artifactId>model</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-java2ws-plugin</artifactId>
+                <version>${cxf.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                        <version>${cxf.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-rt-frontend-simple</artifactId>
+                        <version>${cxf.version}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>generate-wsdl</id>
+                        <phase>process-classes</phase>
+                        <configuration>
+                            <!-- argline -->
+                            <!-- Use the option -createxsdimports to generate separate xsd files
+                                for types definition -->
+                            <argline>-address http://localhost:8081/developpez/service</argline>
+
+                            <!-- Attach the generated wsdl file to the list of files to be deployed
+                                on install. This means the wsdl file will be copied to the repository with
+                                groupId, artifactId and version of the project and type &quot;wsdl&quot;.
+                                With this option you can use the maven repository as a Service Repository. -->
+                            <attachWsdl>true</attachWsdl>
+                            <className>com.developpez.hugo.ws.services.ProfileResource</className>
+                            <!-- See here for options http://cxf.apache.org/docs/java-to-ws.html -->
+                            <databinding>jaxb</databinding>
+                            <frontend>jaxws</frontend>
+                            <genClient>false</genClient>
+                            <genServer>false</genServer>
+                            <genWrapperbean>false</genWrapperbean>
+                            <genWsdl>true</genWsdl>
+                            <quiet>false</quiet>
+                            <verbose>true</verbose>
+                        </configuration>
+                        <goals>
+                            <goal>java2ws</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

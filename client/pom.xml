@@ -21,12 +21,6 @@
             <artifactId>junit</artifactId>
             <version>4.11</version>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>${project.parent.groupId}</groupId>-->
-            <!--<artifactId>model</artifactId>-->
-            <!--<version>${project.parent.version}</version>-->
-        <!--</dependency>-->
-
     </dependencies>
 
     <build>

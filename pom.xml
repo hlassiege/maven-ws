@@ -13,6 +13,5 @@
 	<module>services</module>
 	<module>client</module>
     <module>webapp</module>
-	<module>uat</module>
   </modules>
 </project>

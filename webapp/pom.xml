@@ -13,6 +13,7 @@
     <properties>
         <properties-maven-plugin.version>1.0-alpha-2</properties-maven-plugin.version>
         <maven-soapui-plugin.version>3.6.1</maven-soapui-plugin.version>
+        <jackson.version>1.8.6</jackson.version>
     </properties>
 
 
@@ -29,6 +30,8 @@
             <artifactId>services</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+
+        <!-- WS service -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-frontend-jaxws</artifactId>
@@ -39,6 +42,30 @@
             <artifactId>cxf-rt-transports-http</artifactId>
             <version>2.7.4</version>
         </dependency>
+
+        <!-- REST service -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+            <version>2.7.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-jaxrs</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>

@@ -2,9 +2,11 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:jaxws="http://cxf.apache.org/jaxws"
+    xmlns:jaxrs="http://cxf.apache.org/jaxrs"
 	xsi:schemaLocation="
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-	http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+	http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+	http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
 
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
 
@@ -12,5 +14,14 @@
 	  id="profileCreator"
 	  implementor="com.developpez.hugo.ws.services.impl.DefaultProfileResource"
 	  address="/profile" />
+
+    <jaxrs:server id="services" address="/api">
+        <jaxrs:serviceBeans>
+            <bean class="com.developpez.hugo.jaxrs.services.ProfileResource" />
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>
 	  
 </beans>

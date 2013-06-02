@@ -88,7 +88,6 @@
                 <configuration>
                     <stopPort>8089</stopPort>
                     <stopKey>stop</stopKey>
-                    <daemon>true</daemon>
                 </configuration>
                 <executions>
                     <execution>
@@ -97,6 +96,9 @@
                         <goals>
                             <goal>run</goal>
                         </goals>
+                        <configuration>
+                            <daemon>true</daemon>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>stop-jetty</id>

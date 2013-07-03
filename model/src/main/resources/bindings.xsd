@@ -11,12 +11,6 @@
                 <jaxb:javaType name="java.util.Date" xmlType="xs:dateTime"
                     parseMethod="com.developpez.hugo.ws.adapters.DateAdapter.unmarshal"
                     printMethod="com.developpez.hugo.ws.adapters.DateAdapter.marshal" />
-				<jaxb:javaType name="java.lang.Integer" xmlType="xs:integer"
-                    parseMethod="com.developpez.hugo.ws.adapters.IntegerAdapter.unmarshal"
-                    printMethod="com.developpez.hugo.ws.adapters.IntegerAdapter.marshal" />
-				<jaxb:javaType name="java.lang.Double" xmlType="xs:decimal"
-					parseMethod="com.developpez.hugo.ws.adapters.DoubleAdapter.unmarshal"
-					printMethod="com.developpez.hugo.ws.adapters.DoubleAdapter.marshal" />
 			</jaxb:globalBindings>
 		</xsd:appinfo>
 	</xsd:annotation>
